@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
-    public int[,] piecePosition = new int[1,1];
-
+    public int x;
+    public int y;
 
     // Start is called before the first frame update
     void Start()

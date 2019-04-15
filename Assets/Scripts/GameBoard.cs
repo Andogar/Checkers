@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameBoard : MonoBehaviour
 {
-    public Piece[,] pieces = new Piece[8, 8];
+    public Piece[,] piecesArray = new Piece[8, 8];
     public GameObject whitePiece;
     public GameObject blackPiece;
 
@@ -13,6 +13,7 @@ public class GameBoard : MonoBehaviour
     private Vector3 pieceOffset = new Vector3(0.5f, 0, 0.5f);
 
     private Vector2 mouseOver;
+    private Piece selectedPiece;
 
     private void Start()
     {
@@ -27,8 +28,10 @@ public class GameBoard : MonoBehaviour
         {
             int x = (int)mouseOver.x;
             int y = (int)mouseOver.y;
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && piecesArray[x, y] != null)
                 SelectPiece(x, y);
+            if (Input.GetMouseButtonDown(0) && piecesArray[x, y] != null && selectedPiece != null)
+                PlacePiece(selectedPiece, x, y);
         }
     }
 
@@ -52,16 +55,31 @@ public class GameBoard : MonoBehaviour
 
     private void SelectPiece(int x, int y)
     {
-        Piece piece = pieces[x, y];
+        if (x < 0 || x >= piecesArray.Length || y < 0 || y > piecesArray.Length)
+            return;
 
-        if (piece == null)
+        Piece piece = piecesArray[x, y];
+
+        if (piece != null && selectedPiece == null)
         {
-            Debug.Log("No Piece Selected");
-        }
-        else
+            selectedPiece = piece;
+            piecesArray[x, y] = null;
+        } 
+        else if (piece != null && selectedPiece != null)
         {
-            piece.gameObject.SetActive(false);
+            piecesArray[selectedPiece.x, selectedPiece.y] = selectedPiece;
+            selectedPiece = piece;
+            piecesArray[x, y] = null;
         }
+    }
+
+    private void PlacePiece (Piece piece, int x, int y)
+    {
+        if (piecesArray[x, y] != null)
+            return;
+
+        piecesArray[x, y] = piece;
+        piece.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
     }
 
     private void GenerateBoard()
@@ -112,14 +130,16 @@ public class GameBoard : MonoBehaviour
         //Grab the game object and cast it to a piece (I think?)
         Piece piece = go.GetComponent<Piece>();
         //Places the piece in the proper spot in the array, then calls MovePiece to place it on the board
-        pieces[x,y] = piece;
+        piecesArray[x,y] = piece;
 
         MovePiece(piece, x, y);
     }
 
-    private void MovePiece(Piece p, int x, int y)
+    private void MovePiece(Piece piece, int x, int y)
     {
         //Places the piece to the proper position based on it's position in the array
-        p.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
+        piece.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
+        piece.x = x;
+        piece.y = y;
     }
 }
