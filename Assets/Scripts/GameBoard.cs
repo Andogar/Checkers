@@ -28,10 +28,17 @@ public class GameBoard : MonoBehaviour
         {
             int x = (int)mouseOver.x;
             int y = (int)mouseOver.y;
-            if (Input.GetMouseButtonDown(0) && piecesArray[x, y] != null)
-                SelectPiece(x, y);
-            if (Input.GetMouseButtonDown(0) && piecesArray[x, y] != null && selectedPiece != null)
-                PlacePiece(selectedPiece, x, y);
+            if (Input.GetMouseButtonDown(0) && x != -1 && y != -1)
+            {
+                if (piecesArray[x, y] != null)
+                {
+                    Debug.Log("Selected Piece is before selection: " + selectedPiece);
+                    SelectPiece(x, y);
+                    Debug.Log("Selected Piece is after selection: " + selectedPiece);
+                }
+                else if (piecesArray[x, y] == null && selectedPiece != null)
+                    PlacePiece(selectedPiece, x, y);
+            }
         }
     }
 
@@ -58,33 +65,27 @@ public class GameBoard : MonoBehaviour
         if (x < 0 || x >= piecesArray.Length || y < 0 || y > piecesArray.Length)
             return;
 
-        Piece piece = piecesArray[x, y];
-
-        if (piece != null && selectedPiece == null)
+        if (selectedPiece != null)
         {
-            selectedPiece = piece;
-            piecesArray[x, y] = null;
-        } 
-        else if (piece != null && selectedPiece != null)
-        {
+            //Set the currently selected piece back to it's old location and select the new piece
             piecesArray[selectedPiece.x, selectedPiece.y] = selectedPiece;
-            selectedPiece = piece;
-            piecesArray[x, y] = null;
         }
+        Piece piece = piecesArray[x, y];
+        selectedPiece = piece;
+        piecesArray[x, y] = null;
     }
 
     private void PlacePiece (Piece piece, int x, int y)
     {
-        if (piecesArray[x, y] != null)
-            return;
-
+        //Already assumes the coordinates contain a null value
         piecesArray[x, y] = piece;
         piece.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
+        selectedPiece = null;
     }
 
     private void GenerateBoard()
     {
-        // Generate White Pieces
+        //Generate White Pieces
         for (int y = 0; y < 3; y++)
         {
             bool oddRow = (y % 2 == 0);
