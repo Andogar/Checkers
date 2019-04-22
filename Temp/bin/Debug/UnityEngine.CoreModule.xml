@@ -31830,11 +31830,6 @@ A Scene may be invalid if, for example, you tried to open a Scene that does not 
       </summary>
       <param name="value"></param>
     </member>
-    <member name="T:UnityEngine.Scripting.GarbageCollector.Mode">
-      <summary>
-        <para>Garbage collector operation mode.</para>
-      </summary>
-    </member>
     <member name="F:UnityEngine.Scripting.GarbageCollector.Mode.Disabled">
       <summary>
         <para>Disable garbage collector.</para>

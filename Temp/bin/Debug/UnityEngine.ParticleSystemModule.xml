@@ -2803,7 +2803,7 @@ The Noise Module allows you to apply turbulence to the movement of your particle
     </member>
     <member name="T:UnityEngine.ParticleSystem.TrailModule">
       <summary>
-        <para>Access the particle system trails module.</para>
+        <para>Script interface for the Particle System Trails module.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.ParticleSystem.TrailModule.attachRibbonsToTransform">

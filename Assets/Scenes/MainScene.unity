@@ -139,7 +139,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.96864766, g: 0.98039216, b: 0.7372549, a: 1}
   m_Intensity: 0.8
   m_Range: 10
   m_SpotAngle: 30
@@ -256,13 +256,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0.4495869, y: -0, z: -0, w: 0.89323664}
-  m_LocalPosition: {x: 0.09, y: 5.99, z: -5.95}
+  m_LocalRotation: {x: 0.53813493, y: -0, z: -0, w: 0.84285873}
+  m_LocalPosition: {x: 0.09, y: 6.48, z: -4.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 53.434002, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 65.114006, y: 0, z: 0}
 --- !u!1001 &622032073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -365,6 +365,10 @@ MonoBehaviour:
   whitePiece: {fileID: 993292714038534215, guid: bfde74e16f579405aba7a327a996d882,
     type: 3}
   blackPiece: {fileID: 6807514112564154881, guid: 86c855ffc0cc94463a72e2a3bd103f12,
+    type: 3}
+  whiteKing: {fileID: 1332778982649896598, guid: 1fcd01fe696624852af2055caffaba1d,
+    type: 3}
+  blackKing: {fileID: 3459375175783993730, guid: 052dd6ab12b28401eb2a2aca3b3cbbbe,
     type: 3}
 --- !u!65 &622032079
 BoxCollider:

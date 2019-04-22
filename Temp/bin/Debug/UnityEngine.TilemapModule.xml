@@ -178,7 +178,7 @@ Only one class at any one time should set defaultBrush to true.</para>
     </member>
     <member name="T:UnityEngine.GridBrushBase.RotationDirection">
       <summary>
-        <para>Rotate tiles in the GridBrushBase in this direction.</para>
+        <para>Direction to rotate tiles in the GridBrushBase by.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.GridBrushBase.RotationDirection.Clockwise">

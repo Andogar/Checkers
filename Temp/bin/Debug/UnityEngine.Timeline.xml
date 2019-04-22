@@ -51,7 +51,7 @@
     </member>
     <member name="T:UnityEngine.Timeline.ActivationTrack.PostPlaybackState">
       <summary>
-        <para>Specify what state the GameObject is set to after the Timeline has finished playing.</para>
+        <para>Specify what state to leave the GameObject in after the Timeline has finished playing.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Timeline.ActivationTrack.PostPlaybackState.Active">
